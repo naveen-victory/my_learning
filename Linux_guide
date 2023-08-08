@@ -73,12 +73,12 @@ spec:
     spec:
       containers:
         - name: sitecontroller-hack-nav-830
-#          image: kyndrylresiliency.jfrog.io/hackathon2022-local/sitecontroller_hack:latest
-#          image: kyndrylresiliency.jfrog.io/release-830/sitecontroller_image:830
+#          image: docker.io/sc_hack:latest
+#          image: docker.io/sc_hack:830
 
-#	  image: kyndrylresiliency.jfrog.io/release-830/roapplication_image:830
-          image: kyndrylresiliency.jfrog.io/release-830/pr-oracle19_image:830
-          image: kyndrylresiliency.jfrog.io/release-830/dr-oracle19_image:830
+#	  image: docker.io/sc_hack:830:830
+          image: docker.io/sc_hack:830:830
+          image: docker.io/sc_hack:830:830
 
           imagePullPolicy: Always
           args: ["/bin/bash", "10.249.252.166"]
