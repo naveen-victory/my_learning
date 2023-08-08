@@ -1,0 +1,97 @@
+hostnamectl
+df -h  -kh
+fdisk -l
+useradd
+passwd
+usermod -aG wheel your_user_id
+groups username
+su username
+sudo passwd username
+
+su - username
+groups
+sudo whoami
+sudo ls -la /root
+vim /etc/sysconfig/network-scripts/ifcfg-(ethernet)
+
+hostnamectl
+echo RHEL8.2_244_DEV > /etc/hostname
+systemctl restart systemd-hostnamed
+
+find / -type f -name "*.conf"
+find / -type f -name "*_env"
+find /etc -type f -name “*.conf”
+
+rpm -qa | grep -i vnc
+vncpasswd
+vncserver
+
+
+killall java
+rpm -ivh PackageName.rmp
+
+
+docker build -t ro-image .
+docker container prune
+docker rmi -f
+docker images
+docker images prune  
+docker container prune or podman rm -f -a
+docker system prune
+ps -A |grep java
+kill -9 PID
+
+
+
+
+kubectl version --short
+
+kubectl get pods
+kubectl apply -f sitecontroller_hack.yaml
+kubectl get pods
+kubectl delete -f sitecontroller_hack.yaml
+kubectl get pods -o wide
+kubectl describe pod sitecontroller-hack-830-5c49b6fb87-qf7jv > /tmp/830trouble.txt
+kubectl delete pod myapp
+
+kubectl get pods --all-namespaces
+kubectl delete --all deployments --namespace=devopsns
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sitecontroller-hack-830
+spec:
+  selector:
+    matchLabels:
+      run: sitecontroller-nav-830
+  template:
+    metadata:
+      labels:
+        run: sitecontroller-nav-830
+    spec:
+      containers:
+        - name: sitecontroller-hack-nav-830
+#          image: kyndrylresiliency.jfrog.io/hackathon2022-local/sitecontroller_hack:latest
+#          image: kyndrylresiliency.jfrog.io/release-830/sitecontroller_image:830
+
+#	  image: kyndrylresiliency.jfrog.io/release-830/roapplication_image:830
+          image: kyndrylresiliency.jfrog.io/release-830/pr-oracle19_image:830
+          image: kyndrylresiliency.jfrog.io/release-830/dr-oracle19_image:830
+
+          imagePullPolicy: Always
+          args: ["/bin/bash", "10.249.252.166"]
+          volumeMounts:
+          - mountPath: "/scdata"
+            name: sc-vol
+      nodeName: devopskubnode01
+      volumes:
+        - name: sc-vol
+          persistentVolumeClaim:
+            claimName: sc-volclaim-auto
+      securityContext:
+        runAsUser: 0
+      imagePullSecrets:
+        - name: kubsec
+
