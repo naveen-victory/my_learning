@@ -94,4 +94,5 @@ spec:
         runAsUser: 0
       imagePullSecrets:
         - name: kubsec
+https://www.linkedin.com/pulse/ansible-roles-configure-loadbalancer-apache-web-server-agarwal
 
