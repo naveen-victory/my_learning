@@ -16,3 +16,4 @@ EXPOSE 8080
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
 
 #http://localhost:8081/SampleWebApp/
+#docker run -it -p 8081:8080
