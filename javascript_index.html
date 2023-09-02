@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		How to create dynamic HTML pages ?
+	</title>
+</head>
+
+<body>
+	<h1>Enter Your Name</h1>
+
+	<input id="name" type="text">
+	<button type="button" onclick="EnterName()">Submit</button>
+	<p style="color:green" id="demo"></p>
+
+
+	<script>
+		function EnterName() {
+			let x = document.getElementById("name").value;
+
+			document.getElementById("demo").innerHTML =
+				"Welcome to Geeks For Geeks " + x;
+		}
+const fs = require("fs");
+const stringToWrite = "HELLO I AM WRITTEN TO THE FILE";
+
+fs.writeFile("./test.txt", stringToWrite, (err) => {
+if (err) {
+    console.error(err);
+return;
+  }
+});
+console.log("Data has been Written");
+
+	</script>
+</body>
+</html>
+
