@@ -96,3 +96,10 @@ spec:
         - name: kubsec
 https://www.linkedin.com/pulse/ansible-roles-configure-loadbalancer-apache-web-server-agarwal
 
+
+usermod -aG docker jenkins
+usermod -aG root jenkins
+chmod 664 /var/run/docker.sock
+chmod 777 /var/run/docker.sock
+
+
