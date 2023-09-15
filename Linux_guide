@@ -1,48 +1,9 @@
-hostnamectl
-df -h  -kh
-fdisk -l
-useradd
-passwd
 usermod -aG wheel your_user_id
 groups username
-su username
-sudo passwd username
-
-su - username
-groups
-sudo whoami
-sudo ls -la /root
-vim /etc/sysconfig/network-scripts/ifcfg-(ethernet)
-
-hostnamectl
-echo RHEL8.2_244_DEV > /etc/hostname
-systemctl restart systemd-hostnamed
-
-find / -type f -name "*.conf"
-find / -type f -name "*_env"
-find /etc -type f -name “*.conf”
 
 rpm -qa | grep -i vnc
 vncpasswd
 vncserver
-
-
-killall java
-rpm -ivh PackageName.rmp
-
-
-docker build -t ro-image .
-docker container prune
-docker rmi -f
-docker images
-docker images prune  
-docker container prune or podman rm -f -a
-docker system prune
-ps -A |grep java
-kill -9 PID
-
-
-
 
 kubectl version --short
 
@@ -102,6 +63,7 @@ usermod -aG root jenkins
 chmod 664 /var/run/docker.sock
 chmod 777 /var/run/docker.sock
 
+naveenraj ALL=(ALL) NOPASSWD: ALL
 jenkins ALL=(ALL) NOPASSWD: ALL
 sudo docker build -t testimage .
 sudo docker login -u naveen.victory@outlook.com -p Password
