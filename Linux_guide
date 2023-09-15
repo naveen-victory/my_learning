@@ -60,7 +60,6 @@ https://www.linkedin.com/pulse/ansible-roles-configure-loadbalancer-apache-web-s
 
 usermod -aG docker jenkins
 usermod -aG root jenkins
-chmod 664 /var/run/docker.sock
 chmod 777 /var/run/docker.sock
 
 naveenraj ALL=(ALL) NOPASSWD: ALL
