@@ -103,8 +103,7 @@ chmod 664 /var/run/docker.sock
 chmod 777 /var/run/docker.sock
 
 jenkins ALL=(ALL) NOPASSWD: ALL
+sudo docker build -t testimage .
+sudo docker login -u naveen.victory@outlook.com -p Password
+sudo docker push testimage:latest naveenraj123training/project_repo:v1
 
-docker tag local-image:tagname new-repo:tagname
-docker push new-repo:tagname
-docker build testimage:latest
-docker push testimage:latest naveenraj123training/project_repo:v1
