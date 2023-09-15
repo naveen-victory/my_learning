@@ -102,6 +102,8 @@ usermod -aG root jenkins
 chmod 664 /var/run/docker.sock
 chmod 777 /var/run/docker.sock
 
+jenkins ALL=(ALL) NOPASSWD: ALL
+
 docker tag local-image:tagname new-repo:tagname
 docker push new-repo:tagname
 docker build testimage:latest
