@@ -5,7 +5,7 @@
   vars:
     source: "/tmp/index.html"
     destination: "/var/www/html"
-    myname: naveenraj
+    myname: hello
     package1: "{{ lookup('file','/tmp/variable.txt') }}"
   tasks:
   - name: 1. install httpd
@@ -24,3 +24,18 @@
   handlers:
   - name: httpd_service_start
     service: name=httpd state=started
+#_______________________________________________________
+
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  vars_files:
+    - vars.yml 
+  tasks:
+  - name: 1. install httpd
+    yum: name=httpd state=latest
+  - name: copy index.html
+    copy: src={{source}} dest={{destination}}
+
+#___________________________________________________________
