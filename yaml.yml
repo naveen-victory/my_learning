@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  vars:
+    source: "/tmp/index.html"
+    destination: "/var/www/html"
+    myname: naveenraj
+    package1: "{{ lookup('file','/tmp/variable.txt') }}"
+  tasks:
+  - name: 1. install httpd
+    yum: name=httpd state=latest
+  - name: copy index.html
+    copy: src={{source}} dest={{destination}}
+    notify: httpd_service_start
+  - name: install docker
+    yum: name=docker state=latest
+  - name: install git
+    yum: name={{package1}} state=latest
+  - name: print variable name
+    command: echo {{myname}}
+    register: out
+  - debug: var=out.stdout_lines
+  handlers:
+  - name: httpd_service_start
+    service: name=httpd state=started
