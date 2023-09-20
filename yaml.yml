@@ -54,5 +54,10 @@
     with_items:
       - docker
       - systemd  
+  - name: download files
+    get_url:
+      url: https://www.python.org/ftp/python/3.11.5/Python-3.11.5.tar.xz
+      dest: /tmp
+      mode: 0777
 
 
