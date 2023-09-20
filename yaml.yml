@@ -41,3 +41,18 @@
 #___________________________________________________________
 # watch -n 1 who
 #___________________________________________________________
+
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+  - name: example for loops
+    yum: 
+      name: "{{item}}"
+      state: latest
+    with_items:
+      - docker
+      - systemd  
+
+
