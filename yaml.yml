@@ -63,5 +63,9 @@
     yum: name=systemd state=latest
     when:  ansible_os_family == "RedHat"
 
+  - name: Creating an empty file
+    file:
+      path: "/tmp/ansible_text.txt"
+      state: touch
 
 
