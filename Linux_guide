@@ -8,12 +8,12 @@ vncserver
 kubectl version --short
 
 kubectl get pods
-kubectl apply -f sitecontroller_hack.yaml
+kubectl apply -f nginx.yaml
 kubectl get pods
-kubectl delete -f sitecontroller_hack.yaml
+kubectl delete -f nginx.yaml
 kubectl get pods -o wide
-kubectl describe pod sitecontroller-hack-830-5c49b6fb87-qf7jv > /tmp/830trouble.txt
-kubectl delete pod myapp
+kubectl describe pod nginx > /tmp/830trouble.txt
+kubectl delete pod nginx
 
 kubectl get pods --all-namespaces
 kubectl delete --all deployments --namespace=devopsns
@@ -22,18 +22,18 @@ kubectl delete --all deployments --namespace=devopsns
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sitecontroller-hack-830
+  name: nginx-830
 spec:
   selector:
     matchLabels:
-      run: sitecontroller-nav-830
+      run: nginx-830
   template:
     metadata:
       labels:
-        run: sitecontroller-nav-830
+        run: nginx-830
     spec:
       containers:
-        - name: sitecontroller-hack-nav-830
+        - name: nginx-container-830
 #          image: docker.io/sc_hack:latest
 #          image: docker.io/sc_hack:830
 
