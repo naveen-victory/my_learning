@@ -68,4 +68,50 @@ sudo docker build -t testimage .
 sudo docker login -u naveen.victory@outlook.com -p Password
 sudo docker push testimage:latest naveenraj123training/project_repo:v1
 
+__________________________________________________________________________________________________
+getenforce
+rpm -q grubby
+sudo grubby --update-kernel ALL --args selinux=0
+sudo reboot
+getenforce
+
+yum install docker -y
+systemctl enable docker 
+systemctl start docker 
+systemctl status docker 
+
+sudo setenforce 0
+sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/
+enabled=1
+gpgcheck=1
+gpgkey=https://pkgs.k8s.io/core:/stable:/v1.28/rpm/repodata/repomd.xml.key
+exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+EOF
+
+sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+sudo systemctl enable --now kubelet
+swapoff -a
+
+kubeadm init -h
+kubeadm init --pod-network-cidr=192.168.0.0/16 --ignore-preflight-errors=Mem
+kubectl cluster-info
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml -O
+kubectl apply -f calico.yaml
+
+
+kubeadm reset
+sudo -i
+swapoff -a
+exit
+strace -eopenat kubectl version
+
+sudo systemctl stop kubelet
+sudo systemctl start kubelet
+strace -eopenat kubectl version
+__________________________________________________________________________________________________
 
