@@ -1,3 +1,6 @@
+https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
+
+
 usermod -aG wheel your_user_id
 groups username
 
