@@ -127,12 +127,9 @@ testing
 production
 
 
-if [ $environment = testing]
-then
-echo "Deploying in testing Environment"
+if [[ $environment = testing ]]; then
+     echo "Deploying in testing Environment"
+elif [[ $environment = production ]]; then
+     echo "Deploying in production environment"
 
-elif if [ $environment = production] 
-then
-echo "Deploying in production environment"
 fi
-
