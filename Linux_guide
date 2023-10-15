@@ -118,3 +118,21 @@ sudo systemctl start kubelet
 strace -eopenat kubectl version
 __________________________________________________________________________________________________
 
+this is parameterized
+name 
+environment
+
+choices
+testing
+production
+
+
+if [ $environment = testing]
+then
+echo "Deploying in testing Environment"
+
+elif if [ $environment = production] 
+then
+echo "Deploying in production environment"
+fi
+
